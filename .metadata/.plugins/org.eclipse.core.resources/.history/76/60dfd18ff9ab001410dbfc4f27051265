@@ -1,0 +1,12 @@
+package mainPackage;
+
+public class Main {
+	static int currentFrame = 0;
+	public static void main(String[] args){
+		while (true){
+			int frame = currentFrame/100000;
+			System.out.println(frame);
+			currentFrame++;
+		}
+	}
+}
