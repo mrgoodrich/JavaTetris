@@ -1,7 +1,13 @@
 package mainPackage;
 
 public class Main {
+	static int start = 1;
+	static int currentFrame = 0;
 	public static void main(String[] args){
-		System.out.println("test");
+		while (start==1){
+			int frame = currentFrame/100000;
+			System.out.println(frame);
+			currentFrame++;
+		}
 	}
 }
