@@ -13,6 +13,10 @@ import javax.swing.JFrame;
 
 public class Main extends JComponent{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Init variables for main class
 	static long start = 1;
 	static long currentFrame = 0;
@@ -20,6 +24,8 @@ public class Main extends JComponent{
 	static long frameSmall = 0;
 	static boolean[][] grid;
 	static boolean initialDraw = false;
+	final static int width = 720;
+	final static int height = 1080;
 	
 	 //GUI Related
 	static JFrame frame = new JFrame();
@@ -46,7 +52,7 @@ public class Main extends JComponent{
 		}
 		
 		//Configure basic GUI stuff
-		frame.setSize(500, 500);
+		frame.setSize(width, height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 	    frame.getContentPane().add(new Main());
 		frame.setVisible(true);
@@ -83,29 +89,23 @@ public class Main extends JComponent{
 	
 	public void paintComponent(Graphics g){
 		Graphics2D g2 = (Graphics2D) g;
-		red = rand.nextFloat();
-		green = rand.nextFloat();
-		blue = rand.nextFloat();
-		randomColor = new Color(red,green,blue);
-		g2.setPaint(randomColor);
-		g2.fill(new Rectangle2D.Double(10, 10, 200, 200));
+		for(int i=0; i<grid.length;i++){
+			for (int j=0; j<grid[0].length;j++){
+				
+				//Add if logic checking array of what to fill here and set accordingly
+				
+				red = rand.nextFloat();
+				green = rand.nextFloat();
+				blue = rand.nextFloat();
+				randomColor = new Color(red,green,blue);
+				g2.setPaint(randomColor);
+				g2.fill(new Rectangle2D.Double(i*width/grid.length, j*height/grid[0].length, width/grid.length, height/grid[0].length));
+			}
+		}
 	}
 	
 	//Draws every frame
 	static void render(){
 		frame.repaint();
-		
-//		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n ");
-//		for (int i=0; i<grid.length;i++){
-//			for (int j=0; j<grid[0].length;j++){
-//				if (grid[i][j] == true){
-//					System.out.print("x");
-//				}
-//				else{
-//					System.out.print("o");
-//				}
-//			}
-//			System.out.println("");
-//		}
 	}
 }
